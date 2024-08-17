@@ -1,0 +1,7 @@
+[user]
+	email = 63792136+Pjiwm@users.noreply.github.com
+	name = Pjiwm
+[http]
+	postBuffer = 524288000
+[init]
+	defaultBranch = main
