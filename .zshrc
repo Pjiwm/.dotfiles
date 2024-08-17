@@ -39,9 +39,6 @@ export HISTCONTROL=erasedups:ignoredups:ignorespace
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 
-# Allow Ctrl-S for history navigation (with Ctrl-R)
-[[ $- == *i* ]] && stty -ixon
-
 # Ignore case on auto-completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
