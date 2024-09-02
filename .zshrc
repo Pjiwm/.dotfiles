@@ -73,12 +73,10 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 alias home="cd ~"
 alias diskspace="du -S | sort -n -r | more"
 alias tree='tree -CAhF --dirsfirst'
+alias restore_tmux="tmux start-server \; run-shell '~/.tmux/plugins/tmux-resurrect/scripts/restore.sh'"
 
 export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bin:/.local/share/flatpak/exports/bin"
 export PATH=$PATH:/usr/local/go/bin
-
-# Activate TMUX server and ressurect stored sessions.
-tmux start-server \; run-shell '~/.tmux/plugins/tmux-resurrect/scripts/restore.sh'
 
 # Activate starship
 eval "$(starship init zsh)"
