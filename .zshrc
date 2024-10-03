@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Check if interactive shell
-iatest=$(expr index "$-" i)
+# iatest=$(expr index "$-" i)
 
 # Source global definitions (Zsh doesn't typically use /etc/bashrc, but you can include it if needed)
 if [ -f /etc/zshrc ]; then
@@ -80,3 +80,10 @@ export PATH=$PATH:/usr/local/go/bin
 
 # Activate starship
 eval "$(starship init zsh)"
+# For iterm2
+export CLICOLOR=1
+export TERM=xterm-256color
+export COLORTERM=truecolor
+
+# FNM
+eval "$(fnm env --use-on-cd)"
