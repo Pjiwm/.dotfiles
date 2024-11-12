@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Check if interactive shell
-# iatest=$(expr index "$-" i)
+iatest=$(expr index "$-" i)
 
 # Source global definitions (Zsh doesn't typically use /etc/bashrc, but you can include it if needed)
 if [ -f /etc/zshrc ]; then
@@ -13,12 +13,8 @@ autoload -Uz compinit
 compinit
 
 # EXPORTS
-
-# Mecab
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
-
-
 
 # NVM export
 export NVM_DIR="$HOME/.nvm"
@@ -85,5 +81,4 @@ export CLICOLOR=1
 export TERM=xterm-256color
 export COLORTERM=truecolor
 
-# FNM
-eval "$(fnm env --use-on-cd)"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
