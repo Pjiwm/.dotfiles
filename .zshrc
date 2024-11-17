@@ -82,3 +82,5 @@ export TERM=xterm-256color
 export COLORTERM=truecolor
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
