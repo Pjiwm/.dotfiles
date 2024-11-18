@@ -73,6 +73,7 @@ alias restore_tmux="tmux start-server \; run-shell '~/.tmux/plugins/tmux-resurre
 
 export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bin:/.local/share/flatpak/exports/bin"
 export PATH=$PATH:/usr/local/go/bin
+export POLYBAR_CONFIG=~/.config/polybar/config.ini
 
 # Activate starship
 eval "$(starship init zsh)"
