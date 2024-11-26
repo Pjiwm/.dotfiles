@@ -11,7 +11,6 @@
 
 set $mod Mod4
 
-exec_always --no-startup-id killall picom
 exec_always --no-startup-id picom
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id bash ~/.config/polybar/launch_polybar.sh
@@ -64,7 +63,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id dmenu_run
+# start rofi
+bindsym $mod+d exec rofi -show combi
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
