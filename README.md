@@ -12,6 +12,12 @@ cd .dotfiles
 # Setup
 
 ## Universal installations
+
+Submodules
+```bash
+git submodule update --init --recursive
+```
+
 Install cargo
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
