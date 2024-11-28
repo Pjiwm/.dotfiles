@@ -1,0 +1,9 @@
+[X-GNOME-Metatheme]
+Name=Marwaita X Dark
+Comment=GTK theme
+GtkTheme=Marwaita X Dark
+IconTheme=Marwaita-Dark
+CursorTheme=Marwaita
+CursorSize=24
+Encoding=UTF-8
+Type=X-GNOME-Metatheme
