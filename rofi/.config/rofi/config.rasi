@@ -2,7 +2,7 @@ configuration {
 	location: 0;
   show-icons: true;
 	terminal: "alacritty";
-	sidebar-mode: true;
+/* sidebar-mode: false; */
 /*	modi: "window,run,ssh";*/
 /*	font: "mono 12";*/
 /*	yoffset: 0;*/
