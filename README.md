@@ -28,6 +28,11 @@ Install Starship
 curl -sS https://starship.rs/install.sh | sh
 ```
 
+or using cargo
+```bash
+cargo install starship --locked
+```
+
 ## POP_OS! with i3
 
 ### Dependencies
@@ -40,11 +45,6 @@ sudo apt install stow picom polybar rofi tmux i3 build-essentials
 Install Alacritty using cargo
 ```bash
 cargo install alacritty
-```
-
-or using cargo
-```bash
-cargo install starship --locked
 ```
 
 Install neovim
