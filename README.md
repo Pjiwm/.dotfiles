@@ -39,7 +39,7 @@ cargo install starship --locked
 
 required packages
 ```bash
-sudo apt install stow picom polybar rofi tmux i3 build-essentials
+sudo apt install stow picom polybar rofi tmux i3 build-essentials ripgrep
 ```
 
 Install Alacritty using cargo
@@ -68,7 +68,7 @@ stow alacritty backgrounds bashrc gitconfig gtk2 gtk3 gtk4 i3wm nvim picom polyb
 
 required packages
 ```bash
-brew install tmux neovim
+brew install tmux neovim ripgrep
 ```
 
 Install Alacritty cask
