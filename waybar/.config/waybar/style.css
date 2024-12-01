@@ -2,17 +2,17 @@
 * {
     border: none;
     border-radius: 0;
-    font-size: 11pt;
+    font-size: 12pt;
     min-height: 0;
 }
 window#waybar {
-    /* opacity: 0; */
+    opacity: 1;
     background: @background-darker;
     color: @foreground;
     border-bottom: 2px solid @background;
 }
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 4px;
     background: @background;
     color: @foreground;
 }
