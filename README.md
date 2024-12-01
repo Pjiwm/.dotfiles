@@ -81,6 +81,14 @@ brew install --cask alacritty
 stow nvim tmux starship zshrc alacritty
 ```
 
+## Post installs
+Installations after getting needed packages.
+
+Install TPM (tmux)
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
 # Font
 Nerd font used is [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
 
