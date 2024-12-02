@@ -7,9 +7,9 @@
 }
 window#waybar {
     opacity: 1;
-    background: @background-darker;
+    background: @background;
     color: @foreground;
-    border-bottom: 2px solid @background;
+    border-bottom: 2px solid @background-darker;
 }
 #workspaces button {
     padding: 0 8px;
@@ -35,5 +35,5 @@ window#waybar {
 }
 #clock {
     padding: 0 8px;
-    background: @background;
+    background: @background-darker;
 }
