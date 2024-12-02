@@ -12,25 +12,28 @@ window#waybar {
     border-bottom: 2px solid @background;
 }
 #workspaces button {
-    padding: 0 4px;
+    padding: 0 8px;
     background: @background;
     color: @foreground;
 }
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    background-image: linear-gradient(0deg, @selection, @background-darker);
+    background: @background-darker
 }
 #workspaces button.active {
-    background-image: linear-gradient(0deg, @purple, @selection);
+        background: @purple
+
 }
 #workspaces button.urgent {
-    background-image: linear-gradient(0deg, @red, @background-darker);
+        background: @background-darker
+
 }
 #taskbar button.active {
-    background-image: linear-gradient(0deg, @selection, @background-darker);
+        background: @background-darker
+
 }
 #clock {
-    padding: 0 4px;
+    padding: 0 8px;
     background: @background;
 }
