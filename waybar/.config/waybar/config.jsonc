@@ -27,17 +27,17 @@
         // "sway/language",
         "battery",
         // "battery#bat2",
-        "clock",
-        "tray"
+        "clock"
+        // "tray"
     ],
     // Modules configuration
-     "wlr/taskbar": {
-       "on-click": "activate",
-       "on-click-middle": "close",
-       "ignore-list": [
-         "foot"
-       ]
-     },
+     // "wlr/taskbar": {
+     //   "on-click": "activate",
+     //   "on-click-middle": "close",
+     //   "ignore-list": [
+     //     "foot"
+     //   ]
+     // },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
