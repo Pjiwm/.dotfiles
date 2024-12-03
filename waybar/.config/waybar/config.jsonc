@@ -209,7 +209,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/fcitx": {
-        "exec": "./fcitx_lang.sh",
+        "exec": "~/.config/waybar/fcitx_lang.sh",
         "interval": 1,
         "format": "{} 文"
     },
