@@ -16,6 +16,8 @@ compinit
 export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 export GTK_THEME=Dracula
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx 
 
 # NVM export
 export NVM_DIR="$HOME/.nvm"

@@ -1,4 +1,6 @@
 // -*- mode: jsonc -*-
+// TO GET THE SCRIPT WORKING
+// chmod +x ./fcitx_lang.sh
 {
     // "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
@@ -16,6 +18,7 @@
     "modules-right": [
         // "mpd",
         // "idle_inhibitor",
+        "custom/fcitx",
         "pulseaudio",
         "network",
         "power-profiles-daemon",
@@ -204,5 +207,11 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
+    },
+    "custom/fcitx": {
+        "exec": "./fcitx_lang.sh",
+        "interval": 1,
+        "format": "{} 文"
+    },
+
 }
