@@ -18,6 +18,7 @@
     "modules-right": [
         // "mpd",
         // "idle_inhibitor",
+        "tray",
         "custom/fcitx",
         "pulseaudio",
         "network",
@@ -31,7 +32,6 @@
         "battery",
         // "battery#bat2",
         "clock"
-        // "tray"
     ],
     // Modules configuration
      // "wlr/taskbar": {
@@ -111,8 +111,8 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 14
+        "icon-size": 1,
+        "spacing": 16
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -211,7 +211,6 @@
     "custom/fcitx": {
         "exec": "~/.config/waybar/fcitx_lang.sh",
         "interval": 1,
-        "format": " {} 文"
+        "format": "{} 文"
     },
-
 }
