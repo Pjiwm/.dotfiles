@@ -211,7 +211,7 @@
     "custom/fcitx": {
         "exec": "~/.config/waybar/fcitx_lang.sh",
         "interval": 1,
-        "format": "{} 文"
+        "format": " {} 文"
     },
 
 }
