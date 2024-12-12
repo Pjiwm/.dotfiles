@@ -2,12 +2,9 @@
 // TO GET THE SCRIPT WORKING
 // chmod +x ./fcitx_lang.sh
 {
-    // "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 32, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 16, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "spacing": 0, // Gaps between modules (4px)
     "modules-left": [
         "hyprland/workspaces",
         "wlr/taskbar"
@@ -16,47 +13,18 @@
         "hyprland/window"
     ],
     "modules-right": [
-        // "mpd",
-        // "idle_inhibitor",
-        // "tray",
         "custom/fcitx",
         "pulseaudio",
         "network",
         "power-profiles-daemon",
-        // "cpu",
-        // "memory",
-        // "temperature",
-        // "backlight",
-        // "keyboard-state",
-        // "sway/language",
         "battery",
-        // "battery#bat2",
         "clock"
     ],
-    // Modules configuration
-     // "wlr/taskbar": {
-     //   "on-click": "activate",
-     //   "on-click-middle": "close",
-     //   "ignore-list": [
-     //     "foot"
-     //   ]
-     // },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "warp-on-scroll": false,
-        // "format": "{name} {icon}",
-        "format": "{name}",
-        // "format-icons": {
-        //     // "1": "",
-        //     // "2": "",
-        //     // "3": "",
-        //     // "4": "",
-        //     // "5": "",
-        //     "urgent": "",
-        //     "active": "",
-        //     "default": ""
-        // }
+        "format": "{name}"
     },
     "keyboard-state": {
         "numlock": true,
@@ -110,10 +78,6 @@
             "deactivated": ""
         }
     },
-    "tray": {
-        "icon-size": 1,
-        "spacing": 16
-    },
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -122,22 +86,6 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
@@ -206,11 +154,19 @@
         },
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/fcitx": {
         "exec": "~/.config/waybar/fcitx_lang.sh",
         "interval": 1,
         "format": "{} 文"
     },
+    "wlr/taskbar": {
+	"format": "{icon}",
+	"icon-size": 21,
+	"icon-theme": "Numix-Circle",
+	"tooltip-format": "{title}",
+	"on-click": "activate",
+	"on-click-middle": "close",
+	"ignore-list": []
+	}
 }

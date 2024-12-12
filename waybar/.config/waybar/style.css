@@ -37,3 +37,12 @@ window#waybar {
     padding: 0 8px;
     background: @background-darker;
 }
+
+#custom-fcitx,
+#pulseaudio,
+#network,
+#power-profiles-daemon,
+#battery,
+#clock {
+    margin-left: 16px; 
+}
