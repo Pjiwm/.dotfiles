@@ -1,11 +1,11 @@
 format = """
-[](#3B4252)\
+[](#44475a)\
 $username\
-[](bg:#434C5E fg:#3B4252)\
+[](bg:#282a36 fg:#44475a)\
 $directory\
-[](fg:#434C5E bg:#3C76FC)\
-[](fg:#3C76FC bg:#33658A)\
-[ ](fg:#33658A)\
+[](fg:#282a36 bg:#ff5555)\
+[](fg:#ff5555 bg:#bd93f9)\
+[ ](fg:#bd93f9)\
 """
 command_timeout = 5000
 # Disable the blank line at the start of the prompt
@@ -14,12 +14,12 @@ command_timeout = 5000
 # You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:#3B4252"
-style_root = "bg:#3B4252"
+style_user = "bg:#44475a"
+style_root = "bg:#44475a"
 format = '[$user ]($style)'
 
 [directory]
-style = "bg:#434C5E"
+style = "bg:#282a36"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -36,4 +36,3 @@ truncation_symbol = "…/"
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important  " = "  "
-
