@@ -80,10 +80,27 @@ export POLYBAR_CONFIG=~/.config/polybar/config.ini
 
 # Activate starship
 eval "$(starship init zsh)"
-# For iterm2
+
+# For terminal
 export CLICOLOR=1
 export TERM=xterm-256color
 export COLORTERM=truecolor
 
+# ZSH functions/device specific
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+# Zsh keybinds
+# Key bindings for Home and End
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+
+# Key bindings for Delete
+bindkey "^[[3~" delete-char
+
+# Key bindings for Ctrl + Arrow keys (word navigation)
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# Alternate sequences for some terminals
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
