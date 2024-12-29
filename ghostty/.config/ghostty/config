@@ -23,8 +23,14 @@ selection-foreground = f8f8f2
 background-opacity = 0.75
 shell-integration-features = false
 confirm-close-surface = false
+window-decoration = false
 
 font-family = "JetBrainsMono Nerd Font"
+font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
 cursor-style = block
 clipboard-read = allow
 clipboard-write = allow
+
+keybind = ctrl+l=clear_screen
