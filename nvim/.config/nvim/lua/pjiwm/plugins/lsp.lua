@@ -13,6 +13,7 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
         "numToStr/Comment.nvim",
+        'norcalli/nvim-colorizer.lua',
     },
 
     config = function()
@@ -41,6 +42,10 @@ return {
             vim.keymap.set("v", "<leader>/",
                 "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
                 { noremap = true, silent = true })
+        })
+        require 'colorizer'.setup({
+            '*',
+            css = { rgb_fn = true },
         })
         require("mason").setup()
         require("mason-lspconfig").setup({
