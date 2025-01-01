@@ -1,4 +1,5 @@
 return {
+
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
@@ -6,17 +7,33 @@ return {
         vim.opt.termguicolors = true
         require("bufferline").setup {
             options = {
-                separator_style = "thick",
                 always_show_bufferline = true,
-                diagnostics = "nvim_lsp",
                 show_close_icon = false,
                 show_buffer_close_icons = false,
+            },
+            highlights = {
+                background = {
+                    fg = "#ffffff",
+                    bg = "#282a36",
+                },
+                buffer_selected = {
+                    fg = "#ffffff",
+                    bold = true,
+                    bg = "#282a36",
+                },
+                modified = {
+                    fg = "#50fa7b",
+                    bg = "#282a36",
+                },
+                modified_selected = {
+                    fg = "#50fa7b",
+                    bg = "#282a36",
+                },
             },
         }
 
         local keymap = vim.api.nvim_set_keymap
         local opts = { noremap = true, silent = true }
-
         -- Buffer navigation
         keymap("n", "]b", "<cmd>BufferLineCycleNext<CR>", opts)
         keymap("n", "[b", "<cmd>BufferLineCyclePrev<CR>", opts)
