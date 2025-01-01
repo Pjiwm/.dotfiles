@@ -23,7 +23,7 @@ return {
         keymap("n", ">b", "<cmd>BufferLineMoveNext<CR>", opts)
         keymap("n", "<b", "<cmd>BufferLineMovePrev<CR>", opts)
         keymap("n", "<leader>bb", "<cmd>BufferLinePick<CR>", opts)
-        keymap("n", "<leader>bc", "<cmd>BufferLineCloseLeft<CR>|<cmd>BufferLineCloseRight<CR>", opts)
+        keymap("n", "<leader>bc", "<cmd>bd<CR>", opts)
         keymap("n", "<leader>bC", "<cmd>BufferLineCloseAll<CR>", opts)
         keymap("n", "<leader>bd", "<cmd>BufferLinePickClose<CR>", opts)
         keymap("n", "<leader>bl", "<cmd>BufferLineCloseLeft<CR>", opts)

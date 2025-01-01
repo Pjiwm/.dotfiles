@@ -73,6 +73,7 @@ return {
                             vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
                             vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
                             vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+                            vim.keymap.set("n", "<Leader>lr", vim.lsp.buf.rename, opts)
                             vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                             vim.keymap.set("n", "<F3>", function() vim.lsp.buf.format({ async = true }) end, opts)
                             vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
