@@ -19,11 +19,6 @@ export GTK_THEME=Dracula
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx 
 
-# NVM export
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion (optional)
-
 # Starship config
 export STARSHIP_CONFIG=~/.config/starship.toml
 
