@@ -13,6 +13,7 @@ return {
         })
 
         vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
+
         vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
     end
 }
