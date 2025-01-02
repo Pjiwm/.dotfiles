@@ -16,6 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    ui = { notify = false },
     spec = "pjiwm.plugins",
     change_detection = { notify = false },
     install = { colorscheme = { "habamax" } },
