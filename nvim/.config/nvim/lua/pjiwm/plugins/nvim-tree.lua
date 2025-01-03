@@ -5,11 +5,17 @@ return {
         vim.g.loaded_netrwPlugin = 1
         require('nvim-tree').setup({
             view = {
-                width = 30,
+                width = vim.o.columns,
                 side = 'left',
             },
             open_on_tab = false,
-            -- auto_close = true,
+            hijack_netrw = true,
+            update_cwd = true,
+            actions = {
+                open_file = {
+                    quit_on_open = true
+                },
+            },
         })
 
         vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
