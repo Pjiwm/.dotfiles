@@ -20,17 +20,6 @@ return {
                 collapsed = "",
                 circular = "",
             },
-            controls = {
-                icons = {
-                    pause = "",
-                    play = "",
-                    step_into = "",
-                    step_over = "󱞰",
-                    step_out = "",
-                    run = "▶",
-                    stop = "■"
-                }
-            }
         })
 
         vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticError" })
@@ -38,7 +27,7 @@ return {
         vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticError" })
 
         vim.keymap.set("n", "<F5>", function() dap.continue() end, { noremap = true, silent = true })
-        vim.keymap.set("n", "<S-F5>", function() dap.terminate() end, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader><F5>", function() dap.terminate() end, { noremap = true, silent = true })
         vim.keymap.set("n", "<F10>", function() dap.step_over() end, { noremap = true, silent = true })
         vim.keymap.set("n", "<F11>", function() dap.step_into() end, { noremap = true, silent = true })
         vim.keymap.set("n", "<F12>", function() dap.step_out() end, { noremap = true, silent = true })

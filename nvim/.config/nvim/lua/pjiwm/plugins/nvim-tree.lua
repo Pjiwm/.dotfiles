@@ -9,7 +9,7 @@ return {
                 side = 'left',
             },
             open_on_tab = false,
-            auto_close = true,
+            -- auto_close = true,
         })
 
         vim.cmd([[autocmd VimEnter * NvimTreeOpen]])
