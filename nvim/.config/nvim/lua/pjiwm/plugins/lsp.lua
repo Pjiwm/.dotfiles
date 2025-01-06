@@ -145,6 +145,21 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
         end
         vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { noremap = true, silent = true })
+        vim.keymap.set('n', 'gy', function()
+            local line = vim.fn.line('.') - 1
+            local diag = vim.diagnostic.get(0, { lnum = line })
+
+            if #diag > 0 then
+                -- Grab the first diagnostic message from the list
+                local message = diag[1].message
+                -- Copy it to the clipboard
+                vim.fn.setreg('+', message)
+                print("Yanked diagnostic to clipboard!")
+            else
+                print("No diagnostics found at this location")
+            end
+        end, { noremap = true, silent = true })
+
         vim.diagnostic.config({
             -- update_in_insert = true,
             float = {
