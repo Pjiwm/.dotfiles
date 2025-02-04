@@ -56,12 +56,14 @@ return {
                 "hls",
                 "pylsp",
                 "ts_ls",
+                "volar",
                 "biome"
 
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
+                    -- Define server_config first
+                    local server_config = {
                         capabilities = capabilities,
                         on_attach = function(client, bufnr)
                             local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -77,6 +79,7 @@ return {
                             vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                             vim.keymap.set("n", "<F3>", function() vim.lsp.buf.format({ async = true }) end, opts)
                             vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
+
                             -- Enable format on save if the LSP supports formatting
                             if client.server_capabilities.documentFormattingProvider then
                                 vim.api.nvim_buf_create_user_command(bufnr, "Format",
@@ -85,15 +88,28 @@ return {
                                     end, { desc = "Format current buffer" })
 
                                 -- Automatically format on save
-                                vim.api.nvim_buf_set_option(bufnr, 'formatexpr',
-                                    'v:lua.vim.lsp.formatexpr()')
-                                vim.cmd(
-                                    "autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })")
+                                vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
+                                vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })")
                             end
                         end
                     }
+
+                    -- Modify server_config based on server_name
+                    if server_name == "volar" then
+                        server_config.filetypes = { "vue", "typescript", "javascript" }
+                        server_config.init_options = {
+                            vue = { hybridMode = false },
+                        }
+                        server_config.capabilities = capabilities
+                    elseif server_name == "tl_ls" then
+                        server_config.filetypes = { "typescript", "javascript" }
+                        server_config.capabilities = capabilities
+                    end
+
+                    require("lspconfig")[server_name].setup(server_config)
                 end,
             }
+
         })
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
