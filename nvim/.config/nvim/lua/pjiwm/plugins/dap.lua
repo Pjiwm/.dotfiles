@@ -9,10 +9,39 @@ return {
     config = function()
         local dap = require("dap")
         require("mason-nvim-dap").setup({
-            ensure_installed = { "python", "codelldb", "jsnode", "haskell" },
+            ensure_installed = { "python", "codelldb", "jsnode", "firefox-debug-adapter", "haskell" },
             automatic_installation = true,
             handlers = {}
         })
+
+        -- Firefox
+        dap.adapters.firefox = {
+            type = "executable",
+            command = "node",
+            args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js" },
+        }
+
+        dap.configurations.javascript = {
+            {
+                name = "Launch Firefox",
+                type = "firefox",
+                request = "launch",
+                reAttach = true,
+                -- url = "http://localhost:5173",
+                url = function()
+                    return vim.fn.input("Enter URL (default: http://localhost:5173): ", "http://localhost:5173")
+                end,
+                webRoot = "${workspaceFolder}",
+                firefoxExecutable = "/usr/bin/firefox",
+            },
+        }
+
+        dap.configurations.typescript = dap.configurations.javascript
+        dap.configurations.vue = dap.configurations.javascript
+
+
+
+
         local dapui = require("dapui")
         dapui.setup({
             icons = {
