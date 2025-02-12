@@ -53,7 +53,6 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "taplo",
-                "hls",
                 "pylsp",
                 "ts_ls",
                 "volar",
