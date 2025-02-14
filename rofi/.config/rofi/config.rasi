@@ -1,7 +1,7 @@
 configuration {
-	location: 0;
+  location: 0;
   show-icons: true;
-	terminal: "alacritty";
+  terminal: "ghostty";
 /* sidebar-mode: false; */
 /*	modi: "window,run,ssh";*/
 /*	font: "mono 12";*/
