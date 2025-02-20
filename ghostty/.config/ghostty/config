@@ -32,5 +32,3 @@ font-feature = -dlig
 cursor-style = block
 clipboard-read = allow
 clipboard-write = allow
-
-keybind = ctrl+l=clear_screen
