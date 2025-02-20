@@ -88,7 +88,7 @@ return {
 
                                 -- Automatically format on save
                                 vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
-                                vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })")
+                                -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })")
                             end
                         end
                     }
