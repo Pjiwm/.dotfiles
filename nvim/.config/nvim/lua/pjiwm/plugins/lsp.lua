@@ -78,6 +78,13 @@ return {
                             vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
                             vim.keymap.set("n", "<F3>", function() vim.lsp.buf.format({ async = true }) end, opts)
                             vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
+                            vim.keymap.set("n", "[e", function()
+                                vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+                            end, opts)
+
+                            vim.keymap.set("n", "]e", function()
+                                vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+                            end, opts)
 
                             -- Enable format on save if the LSP supports formatting
                             if client.server_capabilities.documentFormattingProvider then
@@ -174,7 +181,6 @@ return {
                 print("No diagnostics found at this location")
             end
         end, { noremap = true, silent = true })
-
         vim.diagnostic.config({
             -- update_in_insert = true,
             float = {
