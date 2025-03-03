@@ -1,3 +1,6 @@
 [submodule "themes/.themes/Dracula"]
 	path = themes/.themes/Dracula
 	url = https://github.com/dracula/gtk.git
+[submodule "fcitx5/.local/share/fcitx5/themes/dracula"]
+	path = fcitx5/.local/share/fcitx5/themes/dracula
+	url = https://github.com/drbbr/fcitx5-dracula-theme
