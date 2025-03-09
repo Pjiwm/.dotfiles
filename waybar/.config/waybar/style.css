@@ -1,38 +1,43 @@
 @import url("./colors.css");
+
 * {
     border: none;
     border-radius: 0;
     font-size: 12pt;
     min-height: 0;
 }
+
 window#waybar {
     opacity: 1;
     background: @background;
     color: @foreground;
     border-bottom: 2px solid @background-darker;
 }
+
 #workspaces button {
     padding: 0 8px;
     background: @background;
     color: @foreground;
 }
+
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
     background: @background-darker
 }
+
 #workspaces button.active {
-        background: @purple
-
+    background: @purple
 }
+
 #workspaces button.urgent {
-        background: @background-darker
-
+    background: @background-darker
 }
+
 #taskbar button.active {
-        background: @background-darker
-
+    background: @background-darker
 }
+
 #clock {
     padding: 0 8px;
     background: @background-darker;
@@ -42,7 +47,6 @@ window#waybar {
 #pulseaudio,
 #network,
 #power-profiles-daemon,
-#battery,
-#clock {
-    margin-left: 16px; 
+#battery {
+    margin-left: 20px;
 }
