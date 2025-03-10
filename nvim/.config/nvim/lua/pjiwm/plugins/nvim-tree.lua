@@ -16,6 +16,9 @@ return {
                     quit_on_open = true
                 },
             },
+            git = {
+                ignore = true,
+            },
         })
 
         vim.cmd([[autocmd VimEnter * NvimTreeOpen]])

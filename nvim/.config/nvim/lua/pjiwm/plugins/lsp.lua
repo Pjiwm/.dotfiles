@@ -19,6 +19,12 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
+                javascript = { "prettier", "eslint_d" },
+                typescript = { "prettier", "eslint_d" },
+                vue = { "prettier", "eslint_d" },
+                json = { "prettier" },
+                yaml = { "prettier" },
+                markdown = { "prettier" },
             }
         })
         local cmp = require('cmp')
@@ -90,7 +96,8 @@ return {
                             if client.server_capabilities.documentFormattingProvider then
                                 vim.api.nvim_buf_create_user_command(bufnr, "Format",
                                     function()
-                                        vim.lsp.buf.format({ bufnr = bufnr })
+                                        -- vim.lsp.buf.format({ bufnr = bufnr })
+                                        require("conform").format({ bufnr = bufnr, async = true })
                                     end, { desc = "Format current buffer" })
 
                                 -- Automatically format on save
