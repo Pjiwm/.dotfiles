@@ -18,6 +18,7 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 export GTK_THEME=Dracula
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx 
+export ELECTRON_OZONE_PLATFORM_HINT=auto
 
 # Starship config
 export STARSHIP_CONFIG=~/.config/starship.toml
