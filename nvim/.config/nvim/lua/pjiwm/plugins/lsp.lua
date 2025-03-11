@@ -94,11 +94,19 @@ return {
 
                             -- Enable format on save if the LSP supports formatting
                             if client.server_capabilities.documentFormattingProvider then
-                                vim.api.nvim_buf_create_user_command(bufnr, "Format",
-                                    function()
-                                        -- vim.lsp.buf.format({ bufnr = bufnr })
+                                vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+                                    local filetype = vim.bo.filetype
+                                    local formatters = require("conform").formatters_by_ft
+
+                                    -- Check if there are formatters for the current filetype
+                                    if formatters[filetype] and #formatters[filetype] > 0 then
+                                        -- Use conform if there are formatters for the file type
                                         require("conform").format({ bufnr = bufnr, async = true })
-                                    end, { desc = "Format current buffer" })
+                                    else
+                                        -- Fallback to vim.lsp.buf.format if no conform formatters are found
+                                        vim.lsp.buf.format({ bufnr = bufnr })
+                                    end
+                                end, { desc = "Format current buffer" })
 
                                 -- Automatically format on save
                                 vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
