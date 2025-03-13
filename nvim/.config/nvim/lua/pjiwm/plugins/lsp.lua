@@ -22,9 +22,6 @@ return {
                 javascript = { "prettier", "eslint_d" },
                 typescript = { "prettier", "eslint_d" },
                 vue = { "prettier", "eslint_d" },
-                json = { "prettier" },
-                yaml = { "prettier" },
-                markdown = { "prettier" },
             }
         })
         local cmp = require('cmp')
