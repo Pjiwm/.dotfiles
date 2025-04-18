@@ -7,3 +7,7 @@
 	defaultBranch = main
 [core]
 	pager = less -FRX
+[alias]
+	subrecurse = submodule update --init --recursive
+    subrepull = submodule update --recursive --remote
+    leasepush = push --force-with-lease
