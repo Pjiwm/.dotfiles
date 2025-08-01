@@ -100,3 +100,8 @@ bindkey "^[[1;5D" backward-word
 # Alternate sequences for some terminals
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH=/home/pjiwm/.meteor:$PATH

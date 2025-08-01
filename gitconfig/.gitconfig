@@ -11,3 +11,5 @@
 	subrecurse = submodule update --init --recursive
     subrepull = submodule update --recursive --remote
     leasepush = push --force-with-lease
+    uncommit = reset --mixed HEAD~1
+
