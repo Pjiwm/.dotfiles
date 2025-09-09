@@ -70,6 +70,16 @@ alias diskspace="du -S | sort -n -r | more"
 alias tree='tree -CAhF --dirsfirst'
 alias restore_tmux="tmux start-server \; run-shell '~/.tmux/plugins/tmux-resurrect/scripts/restore.sh'"
 
+# Custom files command
+files() {
+  local dir="${1:-.}"
+  if command -v nautilus >/dev/null 2>&1; then
+    nautilus "$dir" >/dev/null 2>&1 & disown
+  else
+    xdg-open "$dir" >/dev/null 2>&1 &
+  fi
+}
+
 export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bin:/.local/share/flatpak/exports/bin"
 export PATH=$PATH:/usr/local/go/bin
 export POLYBAR_CONFIG=~/.config/polybar/config.ini
