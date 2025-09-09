@@ -18,14 +18,6 @@ return {
 
 	opts = {
 		servers = {
-			-- rust_analyzer = {
-			--   settings = {
-			--     ["rust-analyzer"] = {
-			--       cargo = { allFeatures = true },
-			--       procMacro = { enable = true },
-			--     },
-			--   },
-			-- },
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -34,19 +26,12 @@ return {
 				},
 			},
 			ts_ls = {},
-			-- vue_ls = {
-			-- 	init_options = {
-			-- 		typescript = {
-			-- 			tsdk = vim.fn.stdpath("data")
-			-- 				.. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
-			-- 		},
-			-- 	},
-			-- },
 		},
 	},
 
 	config = function(_, opts)
 		local lspconfig = require("lspconfig")
+		local util = require("lspconfig.util")
 		local fidget = require("fidget")
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
@@ -54,26 +39,53 @@ return {
 
 		fidget.setup({})
 		require("mason").setup()
-		require("mason-lspconfig").setup({ ensure_installed = vim.tbl_keys(opts.servers) })
+		require("mason-lspconfig").setup({
+			ensure_installed = vim.tbl_keys(opts.servers),
+		})
 
 		local capabilities =
 			vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
 
-		lspconfig.vue_ls.setup({
+		local vue_ls_path = vim.fn.stdpath("data")
+			.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			init_options = {
-				typescript = {
-					tsdk = vim.fn.stdpath("data")
-						.. "/mason/packages/typescript-language-server/node_modules/typescript/lib",
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vue_ls_path,
+						languages = { "vue" },
+					},
 				},
 			},
-			filetypes = { "vue" },
+			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+			single_file_support = false,
 		})
+
+		lspconfig.vue_ls.setup({
+			capabilities = capabilities,
+			filetypes = { "vue" },
+			root_dir = util.root_pattern("package.json", "tsconfig.json", ".git"),
+		})
+
+		lspconfig.terraformls.setup({
+			capabilities = capabilities,
+			filetypes = { "terraform", "terraform-vars", "hcl" },
+			root_dir = util.root_pattern(".terraform", "terragrunt.hcl", "*.tf", ".git"),
+		})
+
+		lspconfig.tflint.setup({
+			capabilities = capabilities,
+			filetypes = { "terraform", "hcl" },
+			root_dir = util.root_pattern(".tflint.hcl", ".git"),
+		})
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
 				local bufnr = args.buf
-
-				local map = function(mode, lhs, rhs, desc)
+				local function map(mode, lhs, rhs, desc)
 					vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc, noremap = true, silent = true })
 				end
 
@@ -90,11 +102,11 @@ return {
 				map("n", "<F4>", vim.lsp.buf.code_action, "LSP Code Action")
 				map("n", "[e", function()
 					vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
-				end, "Previous Error")
+				end, "Prev Error")
 				map("n", "]e", function()
 					vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
 				end, "Next Error")
-				map("n", "gl", vim.diagnostic.open_float, "Show Line Diagnostic")
+				map("n", "gl", vim.diagnostic.open_float, "Line Diagnostic")
 				map("n", "gy", function()
 					local line = vim.fn.line(".") - 1
 					local diag = vim.diagnostic.get(0, { lnum = line })
@@ -102,17 +114,11 @@ return {
 						vim.fn.setreg("+", diag[1].message)
 						print("Yanked diagnostic to clipboard!")
 					else
-						print("No diagnostics found at this location")
+						print("No diagnostic here")
 					end
 				end, "Yank Diagnostic")
 			end,
 		})
-
-		-- Setup all LSPs
-		for server, server_opts in pairs(opts.servers) do
-			server_opts.capabilities = capabilities
-			lspconfig[server].setup(server_opts)
-		end
 
 		cmp.setup({
 			snippet = {
