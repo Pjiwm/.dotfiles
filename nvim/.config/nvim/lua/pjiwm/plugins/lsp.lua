@@ -30,12 +30,15 @@ return {
 	},
 
 	config = function(_, opts)
-		local lspconfig = require("lspconfig")
-		local util = require("lspconfig.util")
 		local fidget = require("fidget")
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local cmp_lsp = require("cmp_nvim_lsp")
+		local function root(markers)
+			return function(bufnr)
+				return vim.fs.root(bufnr, markers)
+			end
+		end
 
 		fidget.setup({})
 		require("mason").setup()
@@ -49,7 +52,8 @@ return {
 		local vue_ls_path = vim.fn.stdpath("data")
 			.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
-		lspconfig.ts_ls.setup({
+		-- tsserver
+		vim.lsp.config("ts_ls", {
 			capabilities = capabilities,
 			init_options = {
 				plugins = {
@@ -62,25 +66,31 @@ return {
 			},
 			filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 			single_file_support = false,
+			root_dir = root({ "package.json", "tsconfig.json", ".git" }),
 		})
+		vim.lsp.enable("ts_ls")
 
-		lspconfig.vue_ls.setup({
+		-- Vue LSP:
+		vim.lsp.config("vue_ls", {
 			capabilities = capabilities,
 			filetypes = { "vue" },
-			root_dir = util.root_pattern("package.json", "tsconfig.json", ".git"),
+			root_dir = root({ "package.json", "tsconfig.json", ".git" }),
 		})
+		vim.lsp.enable("vue_ls")
 
-		lspconfig.terraformls.setup({
+		vim.lsp.config("terraformls", {
 			capabilities = capabilities,
 			filetypes = { "terraform", "terraform-vars", "hcl" },
-			root_dir = util.root_pattern(".terraform", "terragrunt.hcl", "*.tf", ".git"),
+			root_dir = root({ ".terraform", "terragrunt.hcl", ".git" }),
 		})
+		vim.lsp.enable("terraformls")
 
-		lspconfig.tflint.setup({
+		vim.lsp.config("tflint", {
 			capabilities = capabilities,
 			filetypes = { "terraform", "hcl" },
-			root_dir = util.root_pattern(".tflint.hcl", ".git"),
+			root_dir = root({ ".tflint.hcl", ".git" }),
 		})
+		vim.lsp.enable("tflint")
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(args)
