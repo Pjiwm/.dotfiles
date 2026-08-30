@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- NOTE: <leader>e is owned by nvim-tree (:NvimTreeToggle). netrw (:Ex) is
+-- disabled by nvim-tree, so the old `vim.cmd.Ex` mapping here was dead.
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")

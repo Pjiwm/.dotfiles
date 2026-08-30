@@ -11,7 +11,7 @@ return {
             },
             open_on_tab = false,
             hijack_netrw = true,
-            update_cwd = true,
+            sync_root_with_cwd = true, -- renamed from the deprecated `update_cwd`
             actions = {
                 open_file = {
                     quit_on_open = true
@@ -22,7 +22,7 @@ return {
             },
             update_focused_file = {
                 enable = true,
-                update_cwd = true,
+                update_root = true, -- renamed from the deprecated `update_cwd`
                 ignore_list = {},
             },
         })

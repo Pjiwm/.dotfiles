@@ -61,14 +61,16 @@ return {
         vim.keymap.set("n", "<F11>", function() dap.step_into() end, { noremap = true, silent = true })
         vim.keymap.set("n", "<F12>", function() dap.step_out() end, { noremap = true, silent = true })
 
-        vim.keymap.set("n", "<leader>b", function() dap.toggle_breakpoint() end, { noremap = true, silent = true })
-        vim.keymap.set("n", "<leader>lp", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
+        -- Debug maps live under <leader>D to avoid clashing with bufferline's
+        -- <leader>b* maps and the <leader>d black-hole delete.
+        vim.keymap.set("n", "<leader>Db", function() dap.toggle_breakpoint() end, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>Dp", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
             { noremap = true, silent = true })
-        vim.keymap.set("n", "<leader>lb",
+        vim.keymap.set("n", "<leader>Dl",
             function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
             { noremap = true, silent = true })
 
-        vim.keymap.set("n", "<leader>du", function() dapui.toggle() end, { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader>Du", function() dapui.toggle() end, { noremap = true, silent = true })
 
         dap.listeners.after["event_initialized"]["dapui_config"] = function()
             dapui.open()
