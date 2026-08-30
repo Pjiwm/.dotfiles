@@ -7,9 +7,15 @@
 	defaultBranch = main
 [core]
 	pager = less -FRX
+    excludesfile = ~/.gitignore_global
 [alias]
 	subrecurse = submodule update --init --recursive
     subrepull = submodule update --recursive --remote
     leasepush = push --force-with-lease
     uncommit = reset --mixed HEAD~1
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

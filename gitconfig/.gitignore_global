@@ -1,0 +1,3 @@
+*.patch
+
+**/.claude/settings.local.json
